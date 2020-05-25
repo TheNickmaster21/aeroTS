@@ -12,6 +12,8 @@
         "rootDir": "src",
         "outDir": "out",
 
+        "include": [ "node_modules" ],
+
         "baseUrl": "src",
         "declaration": false,
 

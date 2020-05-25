@@ -1,6 +1,7 @@
-import Aero from '../../../aero/internal/Aero/Aero';
+import Aero from '@rbxts/aerots/internal/Aero/Aero';
+import { Client, Shared } from 'global-registry';
 
-export class ExampleController extends Aero.Controller {
+export class ExampleController extends Aero.Controller<Client, Shared> {
     Start() {
         print('ExampleController started!');
     }

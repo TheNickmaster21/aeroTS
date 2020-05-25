@@ -2,12 +2,12 @@
  * The ListenerList allows developers to keep a list of connections that can all be disconnected at the same time. This is useful when creating custom objects that need to be destroyed and cleaned up.
  */
 declare class ListenerList {
-	/**
+    /**
 	 * Creates a new ListenerList instance.
 	 */
-	constructor();
+    constructor();
 
-	/**
+    /**
 	 * Adds a connection to the ListenerList
 	 * ```ts
 	 * ListenerList:Connect(Workspace.Changed, property => {
@@ -18,9 +18,12 @@ declare class ListenerList {
 	 * @param func The function to connect to. All parameters are the same as event
 	 * @returns The connection
 	 */
-	Connect<T>(event: RBXScriptSignal<T>, func: (...args: FunctionArguments<T>) => void): RBXScriptConnection;
+    Connect<T extends Callback = Callback>(
+        event: RBXScriptSignal<T>,
+        func: (...args: FunctionArguments<T>) => void
+    ): RBXScriptConnection;
 
-	/** The `BindToRenderStep` function binds a custom function to be called at a specific time during the render step. There are three main arguments for BindToRenderStep: `name`, `priority`, and `what function to call`.
+    /** The `BindToRenderStep` function binds a custom function to be called at a specific time during the render step. There are three main arguments for BindToRenderStep: `name`, `priority`, and `what function to call`.
 	 *
 	 * As it is linked to the client's rendering process, BindToRenderStep can only be called on the client.
 	 *
@@ -76,9 +79,9 @@ declare class ListenerList {
 	 * @param function The custom function being bound.
 	 * @returns None.
 	 */
-	BindToRenderStep(name: string, priority: number, func: (deltaTime: number) => void): void;
+    BindToRenderStep(name: string, priority: number, func: (deltaTime: number) => void): void;
 
-	/** BindAction will bind an action to user input given an action handling function. The action handler function will be called when some input matches the provided user input enums.
+    /** BindAction will bind an action to user input given an action handling function. The action handler function will be called when some input matches the provided user input enums.
 	 * 
 	 * The method behaves like a stack: if two actions are bound to the same user input, only the most recent action handler will be called.  When UnbindAction is called, the action handler is removed from the stack. If an action handler returns `Enum.ContextActionResult.Pass`, an input will call to the next most recently bound action handler.
 	 * @param name The **name** parameter is a label for the binding
@@ -87,14 +90,14 @@ declare class ListenerList {
 	 * @param inputTypes The inputs that invoke the binded function
 	 * @returns None.
 	 */
-	BindAction(
-		name: string,
-		func: (actionName: string, state: Enum.UserInputState, inputObject: InputObject) => void,
-		createTouchButton: boolean,
-		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
-	): void;
+    BindAction(
+        name: string,
+        func: (actionName: string, state: Enum.UserInputState, inputObject: InputObject) => void,
+        createTouchButton: boolean,
+        ...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
+    ): void;
 
-	/** Binds function to fire when specified inputTypes occur. Allows the priority of the bound action to be specified.
+    /** Binds function to fire when specified inputTypes occur. Allows the priority of the bound action to be specified.
 	 * 
 	 * If there are multiple actions bound to one of the _inputTypes_, the priority of this action will determine if it will be passed first.Binds function to fire when specified inputTypes occur. Allows the priority of the bound action to be specified.
 	 * @param name: The **name** parameter is a label for the binding
@@ -104,15 +107,15 @@ declare class ListenerList {
 	 * @param inputTypes The inputs that invoke the binded function
 	 * @returns None.
 	 */
-	BindActionAtPriority(
-		name: string,
-		func: (actionName: string, state: Enum.UserInputState, inputObject: InputObject) => void,
-		createTouchButton: boolean,
-		priorityLevel: number,
-		...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
-	): void;
+    BindActionAtPriority(
+        name: string,
+        func: (actionName: string, state: Enum.UserInputState, inputObject: InputObject) => void,
+        createTouchButton: boolean,
+        priorityLevel: number,
+        ...inputTypes: Array<Enum.KeyCode | Enum.PlayerActions | Enum.UserInputType>
+    ): void;
 
-	/**
+    /**
 	 * Disconnect all events, and unbind both RenderStep and Action bindings.
 	 * 
 	 * ```ts
@@ -121,27 +124,27 @@ declare class ListenerList {
 	 * 
 	 * @returns None.
 	 */
-	DisconnectAll(): void;
+    DisconnectAll(): void;
 
-	/**
+    /**
 	 * Only disconnect events in the list.
 	 */
-	DisconnectEvents(): void;
+    DisconnectEvents(): void;
 
-	/**
+    /**
 	 * Only unbind any bound RenderSteps.
 	 */
-	DisconnectRenderSteps(): void;
+    DisconnectRenderSteps(): void;
 
-	/**
+    /**
 	 * Only unbind any bound actions.
 	 */
-	DisconnectActions(): void;
+    DisconnectActions(): void;
 
-	/**
+    /**
 	 * Alias for `DisconnectAll`.
 	 */
-	Destroy(): void;
+    Destroy(): void;
 }
 
 export = ListenerList;

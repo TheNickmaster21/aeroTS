@@ -1,6 +1,8 @@
-import Aero from '../../../aero/internal/Aero/Aero';
+import Aero from '@rbxts/aerots/internal/Aero/Aero';
+import { AeroServer } from '../../../aero/AeroRegistry';
+import { Shared } from 'global-registry';
 
-export class ExampleService extends Aero.Service {
+export class ExampleService extends Aero.Service<AeroServer, Shared> {
     Start() {
         print('ExampleService started!');
     }

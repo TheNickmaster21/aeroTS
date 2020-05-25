@@ -1,6 +1,6 @@
 // import modules here, e.g.
 
-import { AeroShared, AeroServer, AeroClient } from '../aero/AeroRegistry';
+import { AeroShared, AeroServer, AeroClient } from '@rbxts/aerots/AeroRegistry';
 import { ExampleSharedModule } from 'Shared/example-shared-module';
 import { ExampleService } from 'Server/Services/example-service';
 import { ExampleServerModule } from 'Server/Modules/example-server-module';
@@ -29,14 +29,14 @@ interface Server extends AeroServer {
         // service: serviceDefinition
         // e.g. myService: myService;
 
-        exampleService: ExampleService;
+        'exampleService': ExampleService;
     };
 
     modules: {
         // module: moduleDefinition
         // e.g. myServerModule: myServerModule
 
-        exampleServerModule: ExampleServerModule;
+        'exampleServerModule': ExampleServerModule;
     };
 }
 
@@ -46,13 +46,13 @@ interface Client extends AeroClient {
         // controller: controllerDefinition
         // e.g. myController: myController
 
-        exampleController: ExampleController;
+        'exampleController': ExampleController;
     };
 
     modules: {
         // module: moduleDefinition
         // e.g. myClientModule: myClientModule
 
-        exampleClientModule: ExampleClientModule;
+        'exampleClientModule': ExampleClientModule;
     };
 }

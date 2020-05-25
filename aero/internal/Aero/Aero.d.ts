@@ -1,18 +1,18 @@
-import { Server, Shared, Client } from '../../../src/GlobalRegistry';
+import { AeroServer, AeroShared, AeroClient } from '../../AeroRegistry';
 
-export abstract class Service {
+export abstract class Service<SE extends AeroServer, SH extends AeroShared> {
     Start(): void;
 
     Init(): void;
 
-    Services: Server['services'];
+    Services: SE['services'];
 
-    Modules: Server['modules'];
+    Modules: SE['modules'];
 
-    Shared: Shared;
+    Shared: SH;
 }
 
-export abstract class Controller {
+export abstract class Controller<C extends AeroClient, SH extends AeroShared> {
     Start(): void;
 
     Init(): void;
@@ -21,41 +21,41 @@ export abstract class Controller {
 
     Init(): void;
 
-    Controllers: Client['controllers'];
+    Controllers: C['controllers'];
 
-    Modules: Client['modules'];
+    Modules: C['modules'];
 
-    Shared: Shared;
+    Shared: SH;
 }
 
-export abstract class ServerModule {
+export abstract class ServerModule<SE extends AeroServer, SH extends AeroShared> {
     Start?(): void;
 
     Init?(): void;
 
-    Services: Server['services'];
+    Services: SE['services'];
 
-    Modules: Server['modules'];
+    Modules: SE['modules'];
 
-    Shared: Shared;
+    Shared: SH;
 }
 
-export abstract class ClientModule {
+export abstract class ClientModule<C extends AeroClient, SH extends AeroShared> {
     Start?(): void;
 
     Init?(): void;
 
-    Controllers: Client['controllers'];
+    Controllers: C['controllers'];
 
-    Modules: Client['modules'];
+    Modules: C['modules'];
 
-    Shared: Shared;
+    Shared: SH;
 }
 
-export abstract class SharedModule {
+export abstract class SharedModule<SH extends AeroShared> {
     Start?(): void;
 
     Init?(): void;
 
-    Shared: Shared;
+    Shared: SH;
 }

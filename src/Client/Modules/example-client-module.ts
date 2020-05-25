@@ -1,6 +1,7 @@
-import Aero from '../../../aero/internal/Aero/Aero';
+import Aero from '@rbxts/aerots/internal/Aero/Aero';
+import { Client, Shared } from 'global-registry';
 
-export class ExampleClientModule extends Aero.ClientModule {
+export class ExampleClientModule extends Aero.ClientModule<Client, Shared> {
     Start() {
         print('ExampleClientModule started!');
     }

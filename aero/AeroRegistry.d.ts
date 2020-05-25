@@ -22,11 +22,11 @@ export interface AeroShared {
 }
 
 export interface AeroServer {
-    services: { [key: string]: Service };
-    modules: { [key: string]: ServerModule };
+    services: { [key: string]: Service<any, any> };
+    modules: { [key: string]: ServerModule<any, any> };
 }
 
 export interface AeroClient {
-    controllers: { [key: string]: Controller };
-    modules: { [key: string]: ClientModule };
+    controllers: { [key: string]: Controller<any, any> };
+    modules: { [key: string]: ClientModule<any, any> };
 }
