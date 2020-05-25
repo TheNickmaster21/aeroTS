@@ -1,31 +1,27 @@
 {
-  "name": "aerots",
-  "version": "0.3.1",
-  "description": "roblox-ts typings for AeroGameFramework",
-  "main": "",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-	  "type": "git",
-	  "url": "https://github.com/OverHash/aeroTS"
-  },
-  "keywords": [
-	  "aeroTS",
-	  "aero-game-framework",
-	  "agf",
-	  "roblox-ts"
-  ],
-  "author": "OverHash",
-  "license": "ISC",
-  "bugs": {
-	  "url": "https://github.com/OverHash/aeroTS/issues"
-  },
-  "homepage": "https://github.com/OverHash/aeroTS/README.md",
-  "devDependencies": {
-    "@rbxts/types": "^1.0.336"
-  },
-  "publishConfig": {
-	  "access": "public"
-  }
+    "name": "aerots",
+    "version": "0.3.1",
+    "description": "roblox-ts for AeroGameFramework",
+    "main": "",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/TheNickmaster21/aeroTS"
+    },
+    "keywords": [
+        "aeroTS",
+        "aero-game-framework",
+        "agf",
+        "roblox-ts"
+    ],
+    "author": "TheNickmaster21",
+    "license": "ISC",
+    "devDependencies": {
+        "@rbxts/types": "^1.0.336"
+    },
+    "publishConfig": {
+        "access": "public"
+    }
 }

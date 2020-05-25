@@ -1,14 +1,11 @@
-import Date from "Shared/Date";
-import Maid from "Shared/Maid";
-import Event from "Shared/Event";
-import Thread from "Shared/Thread";
-import Base64 from "Shared/Base64";
-import TableUtil from "Shared/TableUtil";
-import NumberUtil from "Shared/NumberUtil";
-import VectorUtil from "Shared/VectorUtil";
-import ListenerList from "Shared/ListenerList";
-
 // import modules here, e.g.
+
+import { AeroShared, AeroServer, AeroClient } from '../aero/AeroRegistry';
+import { ExampleSharedModule } from 'Shared/example-shared-module';
+import { ExampleService } from 'Server/Services/example-service';
+import { ExampleServerModule } from 'Server/Modules/example-server-module';
+import { ExampleController } from 'Client/Controllers/example-controller';
+import { ExampleClientModule } from 'Client/Modules/example-client-module';
 
 // import mySharedModule = require('Shared/mySharedModule');
 
@@ -18,47 +15,44 @@ import ListenerList from "Shared/ListenerList";
 // import myController = require('Client/Controllers/myController');
 // import myClientModule = require('Client/Modules/myClientModule');
 
+// put all shared stuff here
+interface Shared extends AeroShared {
+    // module: moduleDefinition
+    // e.g. module2: module2;
 
-declare global {
-	// put all shared stuff here
-	interface shared {
-		// module: moduleDefinition
-		// e.g. module2: module2;
-		Date: typeof Date;
-		Maid: typeof Maid;
-		Event: typeof Event;
-		Thread: typeof Thread;
-		Base64: typeof Base64;
-		TableUtil: typeof TableUtil;
-		NumberUtil: typeof NumberUtil;
-		VectorUtil: typeof VectorUtil;
-		ListenerList: typeof ListenerList;
-	}
+    exampleSharedModule: ExampleSharedModule;
+}
 
-	// put all server stuff here
-	interface server {
-		services: {
-			// service: serviceDefinition
-			// e.g. myService: myService;
-		},
+// put all server stuff here
+interface Server extends AeroServer {
+    services: {
+        // service: serviceDefinition
+        // e.g. myService: myService;
 
+        exampleService: ExampleService;
+    };
 
-		modules: {
-			// module: moduleDefinition
-			// e.g. myServerModule: myServerModule
-		}
-	}
+    modules: {
+        // module: moduleDefinition
+        // e.g. myServerModule: myServerModule
 
-	// put all client stuff here
-	interface client {
-		controllers: {
-			// controller: controllerDefinition
-			// e.g. myController: myController
-		},
+        exampleServerModule: ExampleServerModule;
+    };
+}
 
-		modules: {
-			// module: moduleDefinition
-			// e.g. myClientModule: myClientModule
-		}
-	}
+// put all client stuff here
+interface Client extends AeroClient {
+    controllers: {
+        // controller: controllerDefinition
+        // e.g. myController: myController
+
+        exampleController: ExampleController;
+    };
+
+    modules: {
+        // module: moduleDefinition
+        // e.g. myClientModule: myClientModule
+
+        exampleClientModule: ExampleClientModule;
+    };
 }
